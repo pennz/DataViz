@@ -7,7 +7,7 @@ import (
 	"github.com/pennz/DataViz/trees/binaryheap"
 )
 
-type WantIntList struct {
+type TestIntList struct {
 	name   string
 	input  []int
 	output interface{}
@@ -19,7 +19,7 @@ type Solver interface {
 
 type ListQuestion struct { // testing related
 	dscpt string // should instead use testing
-	wants []WantIntList
+	wants []TestIntList
 	alg   interface{}
 }
 
