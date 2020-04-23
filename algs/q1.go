@@ -1,6 +1,7 @@
 package algs
 
 import (
+	"fmt"
 	"log"
 )
 
@@ -33,15 +34,14 @@ func Find2ndGreatest(l []int) int {
 		log.Fatal("list should len > 1")
 	}
 	for _, i := range l {
-		log.Println(i)
 		if i > max {
+			//!!!! found the error
 			max2 = max
 			max = i
 		} else if i > max2 {
+			fmt.Println(i, ">", max2)
 			max2 = i
 		}
 	}
-	// ! for the last one
-	//return maxs[maxIdx]
 	return max2
 }
