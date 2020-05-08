@@ -1,4 +1,4 @@
-[![GoDoc](https://godoc.org/github.com/Arafatk/DataViz?status.svg)](https://godoc.org/github.com/Arafatk/DataViz) [![Build Status](https://travis-ci.org/Arafatk/DataViz.svg)](https://travis-ci.org/Arafatk/DataViz) [![Go Report Card](https://goreportcard.com/badge/github.com/emirpasic/gods)](https://goreportcard.com/report/github.com/Arafatk/Dataviz)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Arafatk/DataViz/blob/master/LICENSE/LICENSE.md) [![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/emersion/stability-badges#stable) [![Maintainability](https://api.codeclimate.com/v1/badges/46c44c86c0be4feaede9/maintainability)](https://codeclimate.com/github/Arafatk/DataViz/maintainability)
+[![GoDoc](https://godoc.org/github.com/pennz/DataViz?status.svg)](https://godoc.org/github.com/pennz/DataViz) [![Build Status](https://travis-ci.org/pennz/DataViz.svg)](https://travis-ci.org/pennz/DataViz) [![Go Report Card](https://goreportcard.com/badge/github.com/pennz/DataViz)](https://goreportcard.com/report/github.com/pennz/Dataviz)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Arafatk/DataViz/blob/master/LICENSE/LICENSE.md) [![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/emersion/stability-badges#stable) [![Maintainability](https://api.codeclimate.com/v1/badges/46c44c86c0be4feaede9/maintainability)](https://codeclimate.com/github/pennz/DataViz/maintainability)
 
 # [DataViz Online](https://go-algorithm.herokuapp.com/Viz)
 Build and visualize data structures in Golang. Inspired by the ideas from [memviz](https://github.com/bradleyjkemp/memviz) and [Gods](https://github.com/emirpasic/gods) this library
@@ -8,7 +8,7 @@ helps user to play around with standard data structures while also giving them t
 
 
 ## Documentation
-Documentation is available at [godoc](https://godoc.org/github.com/Arafatk/dataviz).      
+Documentation is available at [godoc](https://godoc.org/github.com/pennz/dataviz).      
 
 ## Requirements
  - graphviz
@@ -22,7 +22,7 @@ Documentation is available at [godoc](https://godoc.org/github.com/Arafatk/datav
 
 
 ## Installation     
-```go get github.com/Arafatk/Dataviz```
+```go get github.com/pennz/Dataviz```
 
 ## Data Structures
 
