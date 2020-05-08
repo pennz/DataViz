@@ -1,4 +1,10 @@
-[![GoDoc](https://godoc.org/github.com/pennz/DataViz?status.svg)](https://godoc.org/github.com/pennz/DataViz) [![Build Status](https://travis-ci.org/pennz/DataViz.svg)](https://travis-ci.org/pennz/DataViz) [![Go Report Card](https://goreportcard.com/badge/github.com/pennz/DataViz)](https://goreportcard.com/report/github.com/pennz/Dataviz)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Arafatk/DataViz/blob/master/LICENSE/LICENSE.md) [![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/emersion/stability-badges#stable) [![Maintainability](https://api.codeclimate.com/v1/badges/46c44c86c0be4feaede9/maintainability)](https://codeclimate.com/github/pennz/DataViz/maintainability)
+[![GoDoc](https://godoc.org/github.com/pennz/DataViz?status.svg)](https://godoc.org/github.com/pennz/DataViz) 
+[![Build Status](https://travis-ci.org/pennz/DataViz.svg)](https://travis-ci.org/pennz/DataViz)
+[![Go Report Card](https://goreportcard.com/badge/github.com/pennz/Dataviz)](https://goreportcard.com/report/github.com/pennz/Dataviz)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/pennz/DataViz/blob/master/LICENSE/LICENSE.md) 
+[![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/emersion/stability-badges#stable)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0fdb502bfd5cc49dd113/maintainability)](https://codeclimate.com/github/pennz/DataViz/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0fdb502bfd5cc49dd113/test_coverage)](https://codeclimate.com/github/pennz/DataViz/test_coverage)
+
 
 # [DataViz Online](https://go-algorithm.herokuapp.com/Viz)
 Build and visualize data structures in Golang. Inspired by the ideas from [memviz](https://github.com/bradleyjkemp/memviz) and [Gods](https://github.com/emirpasic/gods) this library
