@@ -1,4 +1,4 @@
-[![GoDoc](https://godoc.org/github.com/pennz/DataViz?status.svg)](https://godoc.org/github.com/pennz/DataViz) 
+[![Pkg.go.dev](https://pkg.go.dev/favicon.ico)](https://pkg.go.dev/github.com/pennz/DataViz)
 [![Build Status](https://travis-ci.org/pennz/DataViz.svg)](https://travis-ci.org/pennz/DataViz)
 [![Go Report Card](https://goreportcard.com/badge/github.com/pennz/Dataviz)](https://goreportcard.com/report/github.com/pennz/Dataviz)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/pennz/DataViz/blob/master/LICENSE/LICENSE.md) 
 [![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/emersion/stability-badges#stable)
