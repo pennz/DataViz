@@ -14,6 +14,5 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   - go test -coverprofile=coverage.out ./...
-  - go tool cover -html=coverage.out -o coverage.html
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build --debug -t gocov --exit-code $TRAVIS_TEST_RESULT
