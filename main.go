@@ -78,7 +78,7 @@ func compileHandler(c *gin.Context) {
 	// we can change the body in the go
 	body := c.PostForm("body")
 	s := fmt.Sprintf("version=%d&body=%s&withVet=%s", 2, url.QueryEscape(body), "true")
-	log.Println(s)
+	//log.Println(s)
 	buf := bytes.NewBufferString(s)
 	var relay io.Reader = bytes.NewReader(buf.Bytes())
 	response, err := http.Post("https://play.golang.org/compile", "application/x-www-form-urlencoded; charset=UTF-8", relay)
