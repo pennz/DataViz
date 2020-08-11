@@ -71,11 +71,13 @@ func readCloser2SVG(rc io.ReadCloser) string {
 	json_dot := buf.String()
 	log.Println("json: ", json_dot)
 	var result map[string]interface{}
-	json.Unmarshal(buf, &result)
+	json.Unmarshal(buf.Bytes(), &result)
 	log.Println("json parsed:", result)
 	newStr := new(bytes.Buffer)
-	newStr.WriteString(viz.Dot2SVG(result['Events'][0]['Message'][0]))
-	log.Println("SVG parsed:")
+	log.Println("Events parsed:", result["Events"])
+	//newStr.WriteString(viz.Dot2SVG(result["Events"][0]["Message"][0]))
+	newStr.WriteString(viz.Dot2SVG(result["Events"].(string)))
+	//log.Println("SVG parsed:")
 	return newStr.String()
 }
 
