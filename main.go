@@ -64,15 +64,35 @@ func readCloser2String(rc io.ReadCloser) string {
 //             encodeURIComponent(goSRCcode));
 //     }
 // });
+// {"Errors":"","Events":[{"Message":"digraph graphname
+// {\n\tbgcolor=white\n\tsubgraph cluster_0 {style=filled color=lightgrey
+// node [style=filled color=white shape=\"Msquare\"] -1 0 1 -2
+// 3}\n}\ndigraph graphname {\n\tbgcolor=white\n\tsubgraph cluster_0
+// {style=filled color=lightgrey node [style=filled color=white
+// shape=\"Msquare\"] -1 0 1 -2 3 4}\n}\ndigraph graphname
+// {\n\tbgcolor=white\n\tsubgraph cluster_0 {style=filled color=lightgrey
+// node [style=filled color=white shape=\"Msquare\"] -1 0 1 -2
+// 3 4 5}\n}\ndigraph graphname {\n\tbgcolor=white\n\tsubgraph cluster_0
+// {style=filled color=lightgrey node [style=filled color=white
+// shape=\"Msquare\"] -1 [color=red style=filled fillcolor=red]
+// 0 [color=blue style=filled fillcolor=blue] 1 -2 3 4 5}\n}\ndigraph
+// graphname {\n\tbgcolor=white\n\tsubgraph cluster_0 {style=filled
+// color=lightgrey node [style=filled color=white shape=\"Msquare\"]
+// 0 [color=red style=filled fillcolor=red] -1 [color=blue style=filled
+// fillcolor=blue] 1 -2
+// 3 4 5}\n}\n","Kind":"stdout","Delay":0}],"Status":0,"IsTest":false,"TestsFailed":0,"VetOK":true}]}}]}}]}}
 type RunResult struct {
 	Errors      string
 	Events      []Event
 	Status      int
 	IsTest      bool
 	TestsFailed int
+	VetOK       bool
 }
 type Event struct {
-	Message []string
+	Message string
+	Kind    string
+	Delay   int
 }
 
 func readCloser2SVG(rc io.ReadCloser) string {
@@ -86,9 +106,9 @@ func readCloser2SVG(rc io.ReadCloser) string {
 	log.Println("json parsed:", result)
 	if result.Errors == "" {
 		newStr := new(bytes.Buffer)
-		log.Println("Events parsed:", result)
+		// log.Println("Events parsed:", result)
 		//newStr.WriteString(viz.Dot2SVG(result["Events"][0]["Message"][0]))
-		newStr.WriteString(viz.Dot2SVG(result.Events[0].Message[0]))
+		newStr.WriteString(viz.Dot2SVG(result.Events[0].Message))
 		//log.Println("SVG parsed:")
 		return newStr.String()
 	}
