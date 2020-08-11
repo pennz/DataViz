@@ -28,3 +28,7 @@ Balance v.s. unbalance
 O(log n) - O(n)
 ### definition
 self-balancing , generalization of binary search tree,
+
+# UI part
+SVG generation for 1 Picture is done.
+Need to add for generation of series of SVGs. Then put to different widget.
