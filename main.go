@@ -64,19 +64,23 @@ func readCloser2String(rc io.ReadCloser) string {
 //             encodeURIComponent(goSRCcode));
 //     }
 // });
+type Event struct {
+	Message []string
+}
+
 func readCloser2SVG(rc io.ReadCloser) string {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(rc)
 	log.Println("Converting dot to SVG...")
 	json_dot := buf.String()
 	log.Println("json: ", json_dot)
-	var result map[string]interface{}
+	var result []Event
 	json.Unmarshal(buf.Bytes(), &result)
 	log.Println("json parsed:", result)
 	newStr := new(bytes.Buffer)
-	log.Println("Events parsed:", result["Events"])
+	log.Println("Events parsed:", result)
 	//newStr.WriteString(viz.Dot2SVG(result["Events"][0]["Message"][0]))
-	newStr.WriteString(viz.Dot2SVG(result["Events"].(string)))
+	newStr.WriteString(viz.Dot2SVG(result[0].Message[0]))
 	//log.Println("SVG parsed:")
 	return newStr.String()
 }
