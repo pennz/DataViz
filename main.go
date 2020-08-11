@@ -99,11 +99,11 @@ func readCloser2SVG(rc io.ReadCloser) string {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(rc)
 	log.Println("Converting dot to SVG...")
-	json_dot := buf.String()
-	log.Println("json: ", json_dot)
+	//json_dot := buf.String()
+	//log.Println("json: ", json_dot)
 	var result RunResult
 	json.Unmarshal(buf.Bytes(), &result)
-	log.Println("json parsed:", result)
+	//log.Println("json parsed:", result)
 	if result.Errors == "" {
 		newStr := new(bytes.Buffer)
 		// log.Println("Events parsed:", result)
