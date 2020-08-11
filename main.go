@@ -64,6 +64,13 @@ func readCloser2String(rc io.ReadCloser) string {
 //             encodeURIComponent(goSRCcode));
 //     }
 // });
+type RunResult struct {
+	Errors      string
+	Events      []Event
+	Status      int
+	IsTest      bool
+	TestsFailed int
+}
 type Event struct {
 	Message []string
 }
@@ -74,15 +81,19 @@ func readCloser2SVG(rc io.ReadCloser) string {
 	log.Println("Converting dot to SVG...")
 	json_dot := buf.String()
 	log.Println("json: ", json_dot)
-	var result []Event
+	var result RunResult
 	json.Unmarshal(buf.Bytes(), &result)
 	log.Println("json parsed:", result)
-	newStr := new(bytes.Buffer)
-	log.Println("Events parsed:", result)
-	//newStr.WriteString(viz.Dot2SVG(result["Events"][0]["Message"][0]))
-	newStr.WriteString(viz.Dot2SVG(result[0].Message[0]))
-	//log.Println("SVG parsed:")
-	return newStr.String()
+	if result.Errors == "" {
+		newStr := new(bytes.Buffer)
+		log.Println("Events parsed:", result)
+		//newStr.WriteString(viz.Dot2SVG(result["Events"][0]["Message"][0]))
+		newStr.WriteString(viz.Dot2SVG(result.Events[0].Message[0]))
+		//log.Println("SVG parsed:")
+		return newStr.String()
+	}
+	log.Printf("Error when parsing result from playground:\n%s\n", result.Errors)
+	return ""
 }
 
 func read2buf(rc io.ReadCloser) *bytes.Buffer {
