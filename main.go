@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -47,12 +48,35 @@ func readCloser2String(rc io.ReadCloser) string {
 	return newStr
 }
 
+// runGoAsync(goSRCcode).then((d) => {
+//     if (d.Events == null) {
+//         show_status("compiling failed: " + d.Errors, 5500);
+//     }
+//     for (let i = d.Events.length - 1; i >= 1; i--) { // reverse
+//         setGraphSteps(d.Events[i].Message, goSRCcode);
+//     }
+//     let ss0 = splitGraph(d.Events[0].Message)
+//     graphSRC.setValue(ss0[0]);
+//     for (let i = ss0.length; i >= 0; i--) { // reverse
+//         let s = ss0[i];
+//         updateStateHistory(
+//             encodeURIComponent(s),
+//             encodeURIComponent(goSRCcode));
+//     }
+// });
 func readCloser2SVG(rc io.ReadCloser) string {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(rc)
 	log.Println("Converting dot to SVG...")
-	newStr := viz.Dot2SVG(buf.String())
-	return newStr
+	json_dot := buf.String()
+	log.Println("json: ", json_dot)
+	var result map[string]interface{}
+	json.Unmarshal(buf, &result)
+	log.Println("json parsed:", result)
+	newStr := new(bytes.Buffer)
+	newStr.WriteString(viz.Dot2SVG(result['Events'][0]['Message'][0]))
+	log.Println("SVG parsed:")
+	return newStr.String()
 }
 
 func read2buf(rc io.ReadCloser) *bytes.Buffer {
