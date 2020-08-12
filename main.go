@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/pennz/DataViz/viz"
@@ -95,12 +96,37 @@ type Event struct {
 	Delay   int
 }
 
+func splitDotGraph(multiGraph string) []string {
+
+	//var splitGraph = function (s) {
+	//  let ss = s.split("digraph");
+	//  for (let i = 0; i < ss.length; i++) {
+	//    if (ss[i].trim() == "") {
+	//      ss.splice(i, 1);
+	//    }
+	//  }
+	//  for (let i = 0; i < ss.length; i++) {
+	//    ss[i] = "digraph" + ss[i];
+	//  }
+	//  return ss;
+	//};
+	ss := strings.Split(multiGraph, "digraph")
+	gs := make([]string, 0)
+	for _, s := range ss {
+		//log.Println(s)
+		if len(strings.TrimSpace(s)) != 0 {
+			gs = append(gs, "digraph"+s)
+		}
+	}
+	//log.Println(gs)
+	return gs
+}
+
 func readCloser2SVG(rc io.ReadCloser) string {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(rc)
 	log.Println("Converting dot to SVG...")
-	//json_dot := buf.String()
-	//log.Println("json: ", json_dot)
+	//log.Println("json: ", buf.String())
 	var result RunResult
 	json.Unmarshal(buf.Bytes(), &result)
 	//log.Println("json parsed:", result)
@@ -108,7 +134,14 @@ func readCloser2SVG(rc io.ReadCloser) string {
 		newStr := new(bytes.Buffer)
 		// log.Println("Events parsed:", result)
 		//newStr.WriteString(viz.Dot2SVG(result["Events"][0]["Message"][0]))
-		newStr.WriteString(viz.Dot2SVG(result.Events[0].Message))
+		message := result.Events[0].Message
+		// need to parse dia subgraph
+		for _, oneDot := range splitDotGraph(message) {
+			//log.Println("dot: ", oneDot)
+			svg := viz.Dot2SVG(oneDot)
+			//log.Println("svg: ", svg)
+			newStr.WriteString(svg)
+		}
 		//log.Println("SVG parsed:")
 		return newStr.String()
 	}
